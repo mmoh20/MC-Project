@@ -42,7 +42,7 @@ class TopDoctorsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MainTextStyle(
-                title: AppWords.hiHannah,
+                title: AppWords.hiShimaa,
                 weight: FontWeight.w500,
               ),
               SizedBox(
