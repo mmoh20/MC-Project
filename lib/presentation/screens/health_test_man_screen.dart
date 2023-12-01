@@ -77,7 +77,7 @@ class HealthTestManScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(25))),
                           side: MaterialStateProperty.all(const BorderSide(
                               color: AppColors.mainColor, width: 2))),
-                      onPressed: () {},
+                      onPressed: () {Navigator.pop(context);},
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 45.w, vertical: 15.h),

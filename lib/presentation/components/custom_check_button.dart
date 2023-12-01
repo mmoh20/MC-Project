@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mc_project/presentation/screens/unused_screens/settings_screen.dart';
 
 import '../../app/app_colors.dart';
 import '../../app/app_fonts.dart';
@@ -52,6 +53,7 @@ class CustomCheckButton extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingsScreen()));
 
 
                     },

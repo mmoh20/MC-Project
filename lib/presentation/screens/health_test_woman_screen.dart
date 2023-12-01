@@ -18,6 +18,7 @@ class HealthTestWomanScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColors.bgColor,
         elevation: 0,
+
       ),
       backgroundColor: AppColors.bgColor,
       body: SizedBox(
@@ -77,7 +78,7 @@ class HealthTestWomanScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(25))),
                           side: MaterialStateProperty.all(const BorderSide(
                               color: AppColors.mainColor, width:2))),
-                      onPressed: () {},
+                      onPressed: () {Navigator.pop(context);},
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 45.w, vertical: 15.h),

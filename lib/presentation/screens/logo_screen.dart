@@ -15,10 +15,14 @@ class LogoScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: Image.asset(
-                AppImages.logo,
-                width: 138.89.w,
-                height: 104.38.h,
+
+              child: ClipRRect(
+               borderRadius: BorderRadius.circular(50.r),
+                child: Image.asset(
+                  AppImages.logo_2,
+                  width: 198.89.w,
+
+                ),
               ),
             )
           ],

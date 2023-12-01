@@ -7,6 +7,7 @@ class AppImages {
   static const String womenAvatar = '${imgPath}photo-1438761681033-6461ffad8d80.jpeg';
   static const String helpQ = '${imgPath}1904663_bubble_chat_comment_communication_message_icon.png';
   static const String sad = '${imgPath}Group 72198.png';
+  static const String logo_2 = '${imgPath}Screenshot 2023-12-01 181318.png';
   static const String bell = '${imgPath}290107_alarm_alert_bell_christmas_notification_icon.png';
   static const String conditions = '${imgPath}430101_help_question_icon.png';
   static const String settings1 = '${imgPath}Group 72153.png';

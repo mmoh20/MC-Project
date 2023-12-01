@@ -256,11 +256,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               OutlinedButton(
                                 onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const HealthTestScreen()));
+                                  Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HealthTestScreen()),
+                                    (route) => false,
+                                  );
                                 },
                                 style: ButtonStyle(
                                   backgroundColor:

@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mc_project/app/app_fonts.dart';
 import 'package:mc_project/app/app_images.dart';
 import 'package:mc_project/app/app_words.dart';
-import 'package:mc_project/presentation/components/calendr_show_dialog.dart';
 import 'package:mc_project/presentation/components/custom_continue_button.dart';
+import 'package:mc_project/presentation/screens/health_test_man_screen.dart';
+import 'package:mc_project/presentation/screens/login_screen.dart';
 
 import '../../app/app_colors.dart';
 import '../components/main_text_style.dart';
+import 'health_test_woman_screen.dart';
 
 class HealthTestScreen extends StatefulWidget {
   const HealthTestScreen({super.key});
@@ -71,6 +73,17 @@ class _HealthTestScreenState extends State<HealthTestScreen> {
                 )),
           )
         ],
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()));
+          },
+          icon: const Icon(
+            Icons.chevron_left_rounded,
+            color: Colors.black,
+            size: 35,
+          ),
+        ),
       ),
       backgroundColor: AppColors.bgColor,
       body: SizedBox(
@@ -256,11 +269,26 @@ class _HealthTestScreenState extends State<HealthTestScreen> {
               ),
               InkWell(
                   onTap: () {
-                    showDialog(
+                    /* showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           return calender(context);
                         });
+
+                     */
+                    if (male) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const HealthTestManScreen()));
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const HealthTestWomanScreen()));
+                    }
                   },
                   borderRadius: BorderRadius.circular(20.r),
                   child: const CustomContinueButton())
