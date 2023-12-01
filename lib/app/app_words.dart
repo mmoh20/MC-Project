@@ -4,7 +4,7 @@ class AppWords {
   static const String symptoms = 'Select the symptoms you currently have';
   static const String congratulations = 'Congratulations';
   static const String next = 'Next';
-  static const String hiShimaa = 'Hi Shimaa,';
+  static const String hiHannah = 'Hi Hannah,';
   static const String save = 'Save';
   static const String eEmail = 'Enter your e-mail';
   static const String ePass = 'Enter your password';
