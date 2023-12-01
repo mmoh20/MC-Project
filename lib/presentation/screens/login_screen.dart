@@ -39,10 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 25.0.w),
         child: SizedBox(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          width: MediaQuery.of(context).size.width,
           child: Column(
             //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -57,16 +54,6 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 40.h,
               ),
-              // Align(
-              //   alignment: Alignment.centerLeft,
-              //   child: Text(
-              //     AppWords.email,
-              //     style: const TextStyle(
-              //       fontSize: 16,
-              //       fontWeight: FontWeight.w500,
-              //     ),
-              //   ),
-              // ),
               SizedBox(
                 height: 15.h,
               ),
@@ -87,59 +74,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.r),
                       borderSide:
-                      const BorderSide(width: 0, style: BorderStyle.none),
+                          const BorderSide(width: 0, style: BorderStyle.none),
                     )),
                 keyboardType: TextInputType.emailAddress,
                 cursorColor: Colors.black,
               ),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     SizedBox(
-              //       width: 105.w,
-              //       child: DropDownTextField(
-              //         isEnabled: true,
-              //         textFieldDecoration:
-              //             const InputDecoration(hintText: '+971'),
-              //         readOnly: false,
-              //         dropDownItemCount: 3,
-              //         searchShowCursor: false,
-              //         enableSearch: false,
-              //         //searchKeyboardType: TextInputType.number,
-              //         dropDownList: const [
-              //           DropDownValueModel(name: 'Egypt', value: "+20"),
-              //           DropDownValueModel(name: 'Qatar', value: "+974"),
-              //           DropDownValueModel(
-              //             name: 'USA',
-              //             value: "+01",
-              //           ),
-              //         ],
-              //         onChanged: (val) {},
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 190.w,
-              //       child: const TextField(
-              //         decoration: InputDecoration(hintText: 'Ex.1212440126'),
-              //         keyboardType: TextInputType.number,
-              //       ),
-              //     )
-              //   ],
-              // ),
               SizedBox(
                 height: 20.h,
               ),
-              // const Align(
-              //   alignment: Alignment.centerLeft,
-              //   child: Text(
-              //     AppWords.password,
-              //     style: TextStyle(
-              //       fontSize: 16,
-              //       fontWeight: FontWeight.w500,
-              //     ),
-              //   ),
-              // ),
               TextField(
                 controller: _passwordTextController,
                 obscureText: true,
@@ -157,14 +99,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.r),
                       borderSide:
-                      const BorderSide(width: 0, style: BorderStyle.none),
+                          const BorderSide(width: 0, style: BorderStyle.none),
                     )),
                 keyboardType: TextInputType.visiblePassword,
                 cursorColor: Colors.black,
               ),
-              // const TextField(
-              //   decoration: InputDecoration(hintText: 'Enter Password'),
-              // ),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
@@ -180,8 +119,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         return SizedBox(
                           height: 388.h,
                           child: Column(
-                            //mainAxisAlignment: MainAxisAlignment.center,
-                            //mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               SizedBox(
                                 height: 47.h,
@@ -231,8 +168,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: DropDownTextField(
                                       isEnabled: true,
                                       textFieldDecoration:
-                                      const InputDecoration(
-                                          hintText: '+971'),
+                                          const InputDecoration(
+                                              hintText: '+971'),
                                       readOnly: false,
                                       dropDownItemCount: 3,
                                       searchShowCursor: false,
@@ -292,41 +229,42 @@ class _LoginScreenState extends State<LoginScreen> {
               fireLoginButton(context, onTap: () {
                 FirebaseAuth.instance
                     .signInWithEmailAndPassword(
-                    email: _emailTextController.text,
-                    password: _passwordTextController.text)
+                        email: _emailTextController.text,
+                        password: _passwordTextController.text)
                     .then((value) {
-                  Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (
-                          context) => const AllDoctorsScreen()),(route) => false,);
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AllDoctorsScreen()),
+                    (route) => false,
+                  );
                 }).onError((error, stackTrace) {
                   if (kDebugMode) {
                     print("Error ${error.toString()}");
                     showDialog(
-                        context: context, builder: (BuildContext context) {
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50.r)),
-                        contentPadding: EdgeInsets.symmetric(
-                            horizontal: 30.w, vertical: 50.h),
-                        content: const Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                        Center(child: Text('Wrong Email or Password',
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: AppFonts.popMed),)
-
-                        )
-                        ],
-                      ),
-
-
-                      );
-
-
-                    });
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50.r)),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 30.w, vertical: 50.h),
+                            content: const Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Center(
+                                    child: Text(
+                                  'Wrong Email or Password',
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: AppFonts.popMed),
+                                ))
+                              ],
+                            ),
+                          );
+                        });
                   }
                 });
               }),
