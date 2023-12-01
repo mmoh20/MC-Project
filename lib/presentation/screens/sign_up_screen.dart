@@ -247,14 +247,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     email: _emailSignUp.text,
                                     password: _passSignUp.text)
                                 .then((value) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const OtpVerifidScreen(),
+                                  ));
                               if (kDebugMode) {
                                 print("Created New Account");
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const OtpVerifidScreen(),
-                                    ));
                               }
                             });
                           },
