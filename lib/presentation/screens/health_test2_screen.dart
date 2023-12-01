@@ -33,14 +33,16 @@ class _HealthTest2ScreenState extends State<HealthTest2Screen> {
         ),
         centerTitle: true,
         backgroundColor: AppColors.bgColor,
-        elevation: 0,     
-        leading: const IconButton(
-            icon: Icon(
+        elevation: 0,
+        leading: IconButton(
+            icon: const Icon(
               Icons.chevron_left_rounded,
-              size:38,
+              size: 38,
               color: Colors.black,
             ),
-            onPressed: null),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
       ),
       backgroundColor: AppColors.bgColor,
       body: SizedBox(
@@ -265,18 +267,20 @@ class _HealthTest2ScreenState extends State<HealthTest2Screen> {
                       borderRadius: BorderRadius.circular(3.0.r),
                     ),
                     side: MaterialStateBorderSide.resolveWith(
-                      (states) =>  BorderSide(
-                          width: 3.0.w, color: AppColors.mainColor),
+                      (states) =>
+                          BorderSide(width: 3.0.w, color: AppColors.mainColor),
                     ),
                   )
                 ],
               ),
               SizedBox(
-                height:30.h,
+                height: 30.h,
               ),
-               InkWell(
-                 borderRadius: BorderRadius.circular(24.r),
-                onTap:(){Navigator.pop(context);},
+              InkWell(
+                  borderRadius: BorderRadius.circular(24.r),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
                   child: const CustomSaveSymptomsButton())
             ],
           ),

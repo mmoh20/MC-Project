@@ -1,18 +1,16 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mc_project/app/app_colors.dart';
 import 'package:mc_project/app/app_fonts.dart';
 import 'package:mc_project/app/app_images.dart';
 import 'package:mc_project/app/app_words.dart';
-import 'package:dropdown_textfield/dropdown_textfield.dart';
-import 'package:mc_project/presentation/components/custom_submit_button.dart';
+import 'package:mc_project/presentation/components/f_pass_button.dart';
 import 'package:mc_project/presentation/components/title_text_style.dart';
-import 'package:mc_project/presentation/screens/health_test_screen.dart';
 import 'package:mc_project/presentation/screens/sign_up_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../components/fire_log_in_button.dart';
+import '../components/this_account_for_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -105,124 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 cursorColor: Colors.black,
               ),
               Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    showModalBottomSheet<void>(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(75.r),
-                            topLeft: Radius.circular(75.r)),
-                      ),
-                      context: context,
-                      builder: (BuildContext context) {
-                        return SizedBox(
-                          height: 388.h,
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(
-                                height: 47.h,
-                              ),
-                              const Text(
-                                AppWords.ffPassword,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: AppFonts.popMed,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 44.h,
-                              ),
-                              Text(
-                                AppWords.fPassSlogan,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: AppFonts.popMed,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 43.h,
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(left: 35.0),
-                                child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    AppWords.phoneNum,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 18.h,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: 105.w,
-                                    child: DropDownTextField(
-                                      isEnabled: true,
-                                      textFieldDecoration:
-                                          const InputDecoration(
-                                              hintText: '+971'),
-                                      readOnly: false,
-                                      dropDownItemCount: 3,
-                                      searchShowCursor: false,
-                                      enableSearch: false,
-                                      //searchKeyboardType: TextInputType.number,
-                                      dropDownList: const [
-                                        DropDownValueModel(
-                                            name: 'Egypt', value: "+20"),
-                                        DropDownValueModel(
-                                            name: 'Qatar', value: "+974"),
-                                        DropDownValueModel(
-                                          name: 'USA',
-                                          value: "+01",
-                                        ),
-                                      ],
-                                      onChanged: (val) {},
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 15.w,
-                                  ),
-                                  SizedBox(
-                                    width: 190.w,
-                                    child: const TextField(
-                                      decoration: InputDecoration(
-                                          hintText: 'Ex.1212440126'),
-                                      keyboardType: TextInputType.number,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 20.5.h,
-                              ),
-                              const CustomSubmitButton(),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor: AppColors.screenLink,
-                  ),
-                  child: const Text(
-                    AppWords.fPassword,
-                    style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
+                  alignment: Alignment.centerRight,
+                  child: fPassButton(context)),
               SizedBox(
                 height: 30.h,
               ),
@@ -235,101 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return AlertDialog(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.r)),
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 40.w, vertical: 120.h),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Text(
-                                AppWords.thisAccountFor,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontFamily: AppFonts.popMed,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20.h,
-                              ),
-                              OutlinedButton(
-                                onPressed: () {
-                                  Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HealthTestScreen()),
-                                    (route) => false,
-                                  );
-                                },
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.resolveWith(
-                                          (states) {
-                                    if (states
-                                        .contains(MaterialState.pressed)) {
-                                      return AppColors.mainColor
-                                          .withOpacity(0.5);
-                                    }
-                                    return AppColors.mainColor;
-                                  }),
-                                  shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(
-                                      width: 5,
-                                      color: AppColors.mainColor,
-                                    ),
-                                  )),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 65.w, vertical: 15.h),
-                                  child: const Text(
-                                    AppWords.patient,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 30.h,
-                              ),
-                              OutlinedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.resolveWith(
-                                          (states) {
-                                    if (states
-                                        .contains(MaterialState.pressed)) {
-                                      return Colors.white.withOpacity(0.5);
-                                    }
-                                    return Colors.white;
-                                  }),
-                                  shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(
-                                      width: 5,
-                                      color: AppColors.mainColor,
-                                    ),
-                                  )),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 65.w, vertical: 15.h),
-                                  child: const Text(
-                                    AppWords.doctor,
-                                    style:
-                                        TextStyle(color: AppColors.mainColor),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
+                        return thiaAccontFor(context);
                       });
 
                   // Navigator.pushAndRemoveUntil(
@@ -339,33 +127,30 @@ class _LoginScreenState extends State<LoginScreen> {
                   //   (route) => false,
                   // );
                 }).onError((error, stackTrace) {
-                  if (kDebugMode) {
-                    print("Error ${error.toString()}");
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.r)),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 30.w, vertical: 50.h),
-                            content: const Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Center(
-                                    child: Text(
-                                  'Wrong Email or Password',
-                                  style: TextStyle(
-                                      color: Colors.black45,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: AppFonts.popMed),
-                                ))
-                              ],
-                            ),
-                          );
-                        });
-                  }
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50.r)),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 30.w, vertical: 50.h),
+                          content: const Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Center(
+                                  child: Text(
+                                'Wrong Email or Password',
+                                style: TextStyle(
+                                    color: Colors.black45,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: AppFonts.popMed),
+                              ))
+                            ],
+                          ),
+                        );
+                      });
                 });
               }),
               SizedBox(

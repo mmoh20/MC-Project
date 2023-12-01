@@ -22,7 +22,9 @@ class HealthTest4Screen extends StatelessWidget {
           elevation: 0,
           backgroundColor: AppColors.bgColor,
           leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: const Icon(
               Icons.chevron_left_rounded,
               size: 35,
