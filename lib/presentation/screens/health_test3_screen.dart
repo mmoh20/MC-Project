@@ -30,7 +30,9 @@ class _HealthTest3ScreenState extends State<HealthTest3Screen> {
         backgroundColor: AppColors.bgColor,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.chevron_left_rounded,
             size: 35,
