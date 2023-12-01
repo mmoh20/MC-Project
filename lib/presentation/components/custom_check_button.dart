@@ -52,7 +52,38 @@ class CustomCheckButton extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+
+
+                    },
+
+                    child: const CustomDoneButton(),
+                  )
+                ],
+              ),
+            );
+          },
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 101.w, vertical: 15.h),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24),
+            color: AppColors.mainColor),
+        child: const Text(
+          AppWords.check,
+          style: TextStyle(
+              color: AppColors.wordColor,
+              fontSize: 14,
+              fontFamily: AppFonts.popMed,
+              fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+}
+
+/*
+Navigator.pop(context);
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -95,29 +126,4 @@ class CustomCheckButton extends StatelessWidget {
                               ),
                             );
                           });
-                    },
-                    child: const CustomDoneButton(),
-                  )
-                ],
-              ),
-            );
-          },
-        );
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 101.w, vertical: 15.h),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
-            color: AppColors.mainColor),
-        child: const Text(
-          AppWords.check,
-          style: TextStyle(
-              color: AppColors.wordColor,
-              fontSize: 14,
-              fontFamily: AppFonts.popMed,
-              fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-}
+ */

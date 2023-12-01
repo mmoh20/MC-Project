@@ -8,7 +8,7 @@ import 'package:mc_project/app/app_words.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:mc_project/presentation/components/custom_submit_button.dart';
 import 'package:mc_project/presentation/components/title_text_style.dart';
-import 'package:mc_project/presentation/screens/all_doctors_screen.dart';
+import 'package:mc_project/presentation/screens/health_test_screen.dart';
 import 'package:mc_project/presentation/screens/sign_up_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -232,12 +232,110 @@ class _LoginScreenState extends State<LoginScreen> {
                         email: _emailTextController.text,
                         password: _passwordTextController.text)
                     .then((value) {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AllDoctorsScreen()),
-                    (route) => false,
-                  );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.r)),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 40.w, vertical: 120.h),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text(
+                                AppWords.thisAccountFor,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: AppFonts.popMed,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              OutlinedButton(
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HealthTestScreen()));
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.resolveWith(
+                                          (states) {
+                                    if (states
+                                        .contains(MaterialState.pressed)) {
+                                      return AppColors.mainColor
+                                          .withOpacity(0.5);
+                                    }
+                                    return AppColors.mainColor;
+                                  }),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    side: const BorderSide(
+                                      width: 5,
+                                      color: AppColors.mainColor,
+                                    ),
+                                  )),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 65.w, vertical: 15.h),
+                                  child: const Text(
+                                    AppWords.patient,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 30.h,
+                              ),
+                              OutlinedButton(
+                                onPressed: () {},
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.resolveWith(
+                                          (states) {
+                                    if (states
+                                        .contains(MaterialState.pressed)) {
+                                      return Colors.white.withOpacity(0.5);
+                                    }
+                                    return Colors.white;
+                                  }),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    side: const BorderSide(
+                                      width: 5,
+                                      color: AppColors.mainColor,
+                                    ),
+                                  )),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 65.w, vertical: 15.h),
+                                  child: const Text(
+                                    AppWords.doctor,
+                                    style:
+                                        TextStyle(color: AppColors.mainColor),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      });
+
+                  // Navigator.pushAndRemoveUntil(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //       builder: (context) => const AllDoctorsScreen()),
+                  //   (route) => false,
+                  // );
                 }).onError((error, stackTrace) {
                   if (kDebugMode) {
                     print("Error ${error.toString()}");
@@ -316,78 +414,76 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-/*
- showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.r)),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 40.w, vertical: 120.h),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Text(
-                                  AppWords.thisAccountFor,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontFamily: AppFonts.popMed,),
-                                ),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                OutlinedButton(
-                                  onPressed: null,
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      side: const BorderSide(
-                                        width: 5,
-                                        color: AppColors.mainColor,
-                                      ),
-                                    )),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 65.w, vertical: 15.h),
-                                    child: const Text(
-                                      AppWords.patient,
-                                      style:
-                                          TextStyle(color: AppColors.mainColor),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 30.h,
-                                ),
-                                OutlinedButton(
-                                  onPressed: null,
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      side: const BorderSide(
-                                        width: 5,
-                                        color: AppColors.mainColor,
-                                      ),
-                                    )),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 65.w, vertical: 15.h),
-                                    child: const Text(
-                                      AppWords.doctor,
-                                      style:
-                                          TextStyle(color: AppColors.mainColor),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        });
-                  },
- */
+// showDialog(
+//                        context: context,
+//                        builder: (BuildContext context) {
+//                          return AlertDialog(
+//                            shape: RoundedRectangleBorder(
+//                                borderRadius: BorderRadius.circular(30.r)),
+//                            contentPadding: EdgeInsets.symmetric(
+//                                horizontal: 40.w, vertical: 120.h),
+//                            content: Column(
+//                              mainAxisSize: MainAxisSize.min,
+//                              children: [
+//                                const Text(
+//                                  AppWords.thisAccountFor,
+//                                  textAlign: TextAlign.center,
+//                                  style: TextStyle(
+//                                      fontSize: 15,
+//                                      fontFamily: AppFonts.popMed,),
+//                                ),
+//                                SizedBox(
+//                                  height: 20.h,
+//                                ),
+//                                OutlinedButton(
+//                                  onPressed: null,
+//                                  style: ButtonStyle(
+//                                    shape: MaterialStateProperty.all(
+//                                        RoundedRectangleBorder(
+//                                      borderRadius: BorderRadius.circular(30.0),
+//                                      side: const BorderSide(
+//                                        width: 5,
+//                                        color: AppColors.mainColor,
+//                                      ),
+//                                    )),
+//                                  ),
+//                                  child: Padding(
+//                                    padding: EdgeInsets.symmetric(
+//                                        horizontal: 65.w, vertical: 15.h),
+//                                    child: const Text(
+//                                      AppWords.patient,
+//                                      style:
+//                                          TextStyle(color: AppColors.mainColor),
+//                                    ),
+//                                  ),
+//                                ),
+//                                SizedBox(
+//                                  height: 30.h,
+//                                ),
+//                                OutlinedButton(
+//                                  onPressed: null,
+//                                  style: ButtonStyle(
+//                                    shape: MaterialStateProperty.all(
+//                                        RoundedRectangleBorder(
+//                                      borderRadius: BorderRadius.circular(30.0),
+//                                      side: const BorderSide(
+//                                        width: 5,
+//                                        color: AppColors.mainColor,
+//                                      ),
+//                                    )),
+//                                  ),
+//                                  child: Padding(
+//                                    padding: EdgeInsets.symmetric(
+//                                        horizontal: 65.w, vertical: 15.h),
+//                                    child: const Text(
+//                                      AppWords.doctor,
+//                                      style:
+//                                          TextStyle(color: AppColors.mainColor),
+//                                    ),
+//                                  ),
+//                                ),
+//                              ],
+//                            ),
+//                          );
+//                        });
+//                  },

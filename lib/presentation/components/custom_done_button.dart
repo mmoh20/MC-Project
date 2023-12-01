@@ -12,7 +12,7 @@ class CustomDoneButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal:95.w, vertical: 15.h),
+      padding: EdgeInsets.symmetric(horizontal:90.w, vertical: 15.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24), color: AppColors.mainColor),
       child: const Text(

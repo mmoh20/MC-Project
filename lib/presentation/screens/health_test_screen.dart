@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mc_project/app/app_fonts.dart';
 import 'package:mc_project/app/app_images.dart';
 import 'package:mc_project/app/app_words.dart';
+import 'package:mc_project/presentation/components/calendr_show_dialog.dart';
 import 'package:mc_project/presentation/components/custom_continue_button.dart';
 
 import '../../app/app_colors.dart';
-import '../components/custom_check_button.dart';
 import '../components/main_text_style.dart';
 
 class HealthTestScreen extends StatefulWidget {
@@ -18,11 +18,25 @@ class HealthTestScreen extends StatefulWidget {
 
 class _HealthTestScreenState extends State<HealthTestScreen> {
   int count = 0;
+  bool male = true;
+  String gender = 'Male';
 
   void incrementCount() {
     setState(() {
       count++;
     });
+  }
+
+  void genderChange() {
+    if (male == true) {
+      setState(() {
+        gender = 'Male';
+      });
+    } else {
+      setState(() {
+        gender = 'Female';
+      });
+    }
   }
 
   void decementCount() {
@@ -173,7 +187,10 @@ class _HealthTestScreenState extends State<HealthTestScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        male = true;
+                        genderChange();
+                      },
                       borderRadius: BorderRadius.circular(30.r),
                       child: Container(
                         decoration: BoxDecoration(
@@ -197,7 +214,10 @@ class _HealthTestScreenState extends State<HealthTestScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        male = false;
+                        genderChange();
+                      },
                       borderRadius: BorderRadius.circular(30.r),
                       child: Container(
                         decoration: BoxDecoration(
@@ -224,263 +244,22 @@ class _HealthTestScreenState extends State<HealthTestScreen> {
                 ),
               ),
               SizedBox(
-                height: 83.h,
+                height: 30.h,
+              ),
+              Center(
+                child: MainTextStyle(
+                  title: gender,
+                ),
+              ),
+              SizedBox(
+                height: 60.h,
               ),
               InkWell(
                   onTap: () {
                     showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          return AlertDialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.r)),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 50.h),
-                            backgroundColor: AppColors.bgColor,
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Image.asset(
-                                  AppImages.calendar,
-                                  width: 64.w,
-                                  height: 61.h,
-                                ),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                                MainTextStyle(title: AppWords.calender),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        30.r)),
-                                            backgroundColor: AppColors.bgColor,
-                                            contentPadding:
-                                                EdgeInsets.symmetric(
-                                                    horizontal: 20.w,
-                                                    vertical: 20.h),
-                                            content: SizedBox(
-                                              width: 300.w,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  MainTextStyle(
-                                                    title: AppWords.sample,
-                                                    size: 18,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  TextField(
-                                                    decoration: InputDecoration(
-                                                        hintText: '1.2-10',
-                                                        hoverColor:
-                                                            Colors.black26,
-                                                        border:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              const BorderSide(
-                                                                  color: AppColors
-                                                                      .mainColor,
-                                                                  width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.r),
-                                                        ),
-                                                        enabledBorder: OutlineInputBorder(
-                                                            borderSide: const BorderSide(
-                                                                width: 2,
-                                                                color: AppColors
-                                                                    .mainColor),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20))),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  MainTextStyle(
-                                                    title: AppWords.sample,
-                                                    size: 18,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  TextField(
-                                                    decoration: InputDecoration(
-                                                        hintText: '1.2-10',
-                                                        hoverColor:
-                                                            Colors.black26,
-                                                        border:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              const BorderSide(
-                                                                  color: AppColors
-                                                                      .mainColor,
-                                                                  width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.r),
-                                                        ),
-                                                        enabledBorder: OutlineInputBorder(
-                                                            borderSide: const BorderSide(
-                                                                width: 2,
-                                                                color: AppColors
-                                                                    .mainColor),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20))),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  MainTextStyle(
-                                                    title: AppWords.sample,
-                                                    size: 18,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  TextField(
-                                                    decoration: InputDecoration(
-                                                        hintText: '1.2-10',
-                                                        hoverColor:
-                                                            Colors.black26,
-                                                        border:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              const BorderSide(
-                                                                  color: AppColors
-                                                                      .mainColor,
-                                                                  width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.r),
-                                                        ),
-                                                        enabledBorder: OutlineInputBorder(
-                                                            borderSide: const BorderSide(
-                                                                width: 2,
-                                                                color: AppColors
-                                                                    .mainColor),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20))),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  MainTextStyle(
-                                                    title: AppWords.sample,
-                                                    size: 18,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  TextField(
-                                                    decoration: InputDecoration(
-                                                        hintText: '1.2-10',
-                                                        hoverColor:
-                                                            Colors.black26,
-                                                        border:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              const BorderSide(
-                                                                  color: AppColors
-                                                                      .mainColor,
-                                                                  width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.r),
-                                                        ),
-                                                        enabledBorder: OutlineInputBorder(
-                                                            borderSide: const BorderSide(
-                                                                width: 2,
-                                                                color: AppColors
-                                                                    .mainColor),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20))),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  MainTextStyle(
-                                                    title: AppWords.sample,
-                                                    size: 18,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  TextField(
-                                                    decoration: InputDecoration(
-                                                        hintText: '1.2-10',
-                                                        hoverColor:
-                                                            Colors.black26,
-                                                        border:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              const BorderSide(
-                                                                  color: AppColors
-                                                                      .mainColor,
-                                                                  width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.r),
-                                                        ),
-                                                        enabledBorder: OutlineInputBorder(
-                                                            borderSide: const BorderSide(
-                                                                width: 2,
-                                                                color: AppColors
-                                                                    .mainColor),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20))),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 30.h,
-                                                  ),
-                                                  const Align(
-                                                    alignment: Alignment.center,
-                                                    child: CustomCheckButton(),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 30.h,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        });
-                                  },
-                                  child: const CustomContinueButton(),
-                                )
-                              ],
-                            ),
-                          );
+                          return calender(context);
                         });
                   },
                   borderRadius: BorderRadius.circular(20.r),
