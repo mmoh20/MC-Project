@@ -6,7 +6,6 @@ import 'package:mc_project/app/app_words.dart';
 import 'package:mc_project/presentation/components/custom_save_button.dart';
 import 'package:mc_project/presentation/components/title_text_style.dart';
 
-
 class EditYourProfileScreen extends StatelessWidget {
   const EditYourProfileScreen({super.key});
 
@@ -20,24 +19,21 @@ class EditYourProfileScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: SizedBox(
               width: 30,
               child: TextButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          side: const BorderSide(
-                              width: 2, color: AppColors.mainColor),
-                          borderRadius: BorderRadius.circular(10)))),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: TitleTextStyle(
                     title: 'X',
                   )),
             ),
           ),
           SizedBox(
-            width: 15.w,
-          ),
+            width: 10.w,
+          )
         ],
       ),
       backgroundColor: AppColors.bgColor,
@@ -45,101 +41,103 @@ class EditYourProfileScreen extends StatelessWidget {
         width: double.infinity,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20.h,
-              ),
-              Stack(
-                fit: StackFit.passthrough,
-                clipBehavior: Clip.none,
-                children: [
-                  const CircleAvatar(
-                    backgroundColor: AppColors.mainColor,
-                    radius: 100,
-                  ),
-                  const Positioned(
-                    top: 5,
-                    left: 5,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage(AppImages.womenAvatar),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20.h,
+                ),
+                Stack(
+                  fit: StackFit.passthrough,
+                  clipBehavior: Clip.none,
+                  children: [
+                    const CircleAvatar(
                       backgroundColor: AppColors.mainColor,
-                      radius: 95,
+                      radius: 100,
                     ),
-                  ),
-                  Positioned(
-                      bottom: -5,
-                      right: -15,
-                      child: RawMaterialButton(
-                        onPressed: () {},
-                        elevation: 1.0,
-                        fillColor: AppColors.bgColor,
-                        padding: const EdgeInsets.all(10.0),
-                        shape: const CircleBorder(),
-                        child: const Icon(
-                          Icons.mode_edit_rounded,
-                          color: AppColors.mainColor,
-                        ),
-                      )),
-                ],
-              ),
-              SizedBox(
-                height: 50.h,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.r),
-                    borderSide:
-                        const BorderSide(width: 2, color: AppColors.mainColor),
-                  ),
-                  hintText: 'Name',
-                  hintStyle: const TextStyle(
-                      fontWeight: FontWeight.w500, color: Colors.black26),
-                  contentPadding: const EdgeInsets.all(15),
+                    const Positioned(
+                      top: 5,
+                      left: 5,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage(AppImages.womenAvatar),
+                        backgroundColor: AppColors.mainColor,
+                        radius: 95,
+                      ),
+                    ),
+                    Positioned(
+                        bottom: -5,
+                        right: -15,
+                        child: RawMaterialButton(
+                          onPressed: () {},
+                          elevation: 1.0,
+                          fillColor: AppColors.bgColor,
+                          padding: const EdgeInsets.all(10.0),
+                          shape: const CircleBorder(),
+                          child: const Icon(
+                            Icons.mode_edit_rounded,
+                            color: AppColors.mainColor,
+                          ),
+                        )),
+                  ],
                 ),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.r),
-                    borderSide:
-                        const BorderSide(width: 2, color: AppColors.mainColor),
-                  ),
-                  hintText: 'Email',
-                  hintStyle: const TextStyle(
-                      fontWeight: FontWeight.w500, color: Colors.black26),
-                  contentPadding: const EdgeInsets.all(15),
+                SizedBox(
+                  height: 50.h,
                 ),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.r),
-                    borderSide:
-                        const BorderSide(width: 2, color: AppColors.mainColor),
+                TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.r),
+                      borderSide: const BorderSide(
+                          width: 2, color: AppColors.mainColor),
+                    ),
+                    hintText: 'Name',
+                    hintStyle: const TextStyle(
+                        fontWeight: FontWeight.w500, color: Colors.black26),
+                    contentPadding: const EdgeInsets.all(15),
                   ),
-                  hintText: 'Password',
-                  hintStyle: const TextStyle(
-                      fontWeight: FontWeight.w500, color: Colors.black26),
-                  contentPadding: const EdgeInsets.all(15),
                 ),
-              ),
-              SizedBox(
-                height: 50.h,
-              ),
-              InkWell(
-                onTap: () {},
-                borderRadius: BorderRadius.circular(15.r),
-                child: const CustomSaveButton(),
-              )
-            ],
+                SizedBox(
+                  height: 20.h,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.r),
+                      borderSide: const BorderSide(
+                          width: 2, color: AppColors.mainColor),
+                    ),
+                    hintText: 'Email',
+                    hintStyle: const TextStyle(
+                        fontWeight: FontWeight.w500, color: Colors.black26),
+                    contentPadding: const EdgeInsets.all(15),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.r),
+                      borderSide: const BorderSide(
+                          width: 2, color: AppColors.mainColor),
+                    ),
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(
+                        fontWeight: FontWeight.w500, color: Colors.black26),
+                    contentPadding: const EdgeInsets.all(15),
+                  ),
+                ),
+                SizedBox(
+                  height: 50.h,
+                ),
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(15.r),
+                  child: const CustomSaveButton(),
+                )
+              ],
+            ),
           ),
         ),
       ),

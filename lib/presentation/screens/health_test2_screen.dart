@@ -274,7 +274,10 @@ class _HealthTest2ScreenState extends State<HealthTest2Screen> {
               SizedBox(
                 height:30.h,
               ),
-              const InkWell(child: CustomSaveSymptomsButton())
+               InkWell(
+                 borderRadius: BorderRadius.circular(24.r),
+                onTap:(){Navigator.pop(context);},
+                  child: const CustomSaveSymptomsButton())
             ],
           ),
         ),

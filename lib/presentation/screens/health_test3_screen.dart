@@ -7,6 +7,7 @@ import 'package:mc_project/presentation/components/custom_continue_button.dart';
 import 'package:mc_project/presentation/components/main_text_style.dart';
 import 'package:mc_project/presentation/components/title_text_style.dart';
 
+import 'health_test4_screen.dart';
 
 class HealthTest3Screen extends StatefulWidget {
   const HealthTest3Screen({super.key});
@@ -324,7 +325,15 @@ class _HealthTest3ScreenState extends State<HealthTest3Screen> {
               const SizedBox(
                 height: 15,
               ),
-              InkWell(onTap: () {}, child: const CustomContinueButton()),
+              InkWell(
+                  borderRadius: BorderRadius.circular(24.r),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HealthTest4Screen()));
+                  },
+                  child: const CustomContinueButton()),
             ],
           ),
         ),

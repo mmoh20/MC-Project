@@ -356,7 +356,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                   'Wrong Email or Password',
                                   style: TextStyle(
-                                      color: Colors.red,
+                                      color: Colors.black45,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: AppFonts.popMed),

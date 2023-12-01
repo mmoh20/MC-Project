@@ -5,6 +5,7 @@ import 'package:mc_project/app/app_images.dart';
 import 'package:mc_project/app/app_words.dart';
 import 'package:mc_project/presentation/components/main_text_style.dart';
 import 'package:mc_project/presentation/screens/all_doctors_screen.dart';
+import 'package:mc_project/presentation/screens/unused_screens/settings_screen.dart';
 
 class TopDoctorsScreen extends StatelessWidget {
   const TopDoctorsScreen({super.key});
@@ -14,13 +15,19 @@ class TopDoctorsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.bgColor,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 12.0),
-            child: Icon(
-              Icons.menu_rounded,
-              size: 30,
-              color: Colors.black,
+        actions: [
+          IconButton(
+            color: Colors.black,
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsScreen()));
+            },
+            icon: const Icon(
+              Icons.settings,
+              size: 25,
+              color: Colors.black45,
             ),
           ),
         ],
@@ -30,7 +37,7 @@ class TopDoctorsScreen extends StatelessWidget {
       body: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -51,6 +58,7 @@ class TopDoctorsScreen extends StatelessWidget {
                       borderSide: const BorderSide(
                           width: 2, color: AppColors.mainColor),
                       borderRadius: BorderRadius.circular(25.r)),
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
                   suffixIcon: Container(
                     width: 0,
                     height: 0,

@@ -21,8 +21,8 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   bool passVisible = false;
   bool passVisible2 = false;
-   final TextEditingController _emailSignUp=TextEditingController();
-   final TextEditingController _passSignUp=TextEditingController();
+  final TextEditingController _emailSignUp = TextEditingController();
+  final TextEditingController _passSignUp = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -246,16 +246,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 .createUserWithEmailAndPassword(
                                     email: _emailSignUp.text,
                                     password: _passSignUp.text)
-                                .then((value) {if (kDebugMode) {
-                                  print("Created New Account");
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const OtpVerifidScreen(),
-                                      ));
-
-                                }});
-
+                                .then((value) {
+                              if (kDebugMode) {
+                                print("Created New Account");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const OtpVerifidScreen(),
+                                    ));
+                              }
+                            });
                           },
                           child: const CustomContinueButton())
                     ],

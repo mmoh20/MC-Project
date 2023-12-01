@@ -50,7 +50,7 @@ AlertDialog calender(BuildContext context) {
                             height: 10.h,
                           ),
                           MainTextStyle(
-                            title: AppWords.sample,
+                            title: '${AppWords.sample} 1',
                             size: 18,
                           ),
                           SizedBox(
@@ -74,7 +74,7 @@ AlertDialog calender(BuildContext context) {
                             height: 10.h,
                           ),
                           MainTextStyle(
-                            title: AppWords.sample,
+                            title: '${AppWords.sample} 2',
                             size: 18,
                           ),
                           SizedBox(
@@ -98,7 +98,7 @@ AlertDialog calender(BuildContext context) {
                             height: 10.h,
                           ),
                           MainTextStyle(
-                            title: AppWords.sample,
+                            title: '${AppWords.sample} 3',
                             size: 18,
                           ),
                           SizedBox(
@@ -122,7 +122,7 @@ AlertDialog calender(BuildContext context) {
                             height: 10.h,
                           ),
                           MainTextStyle(
-                            title: AppWords.sample,
+                            title: '${AppWords.sample} 4',
                             size: 18,
                           ),
                           SizedBox(
@@ -146,7 +146,7 @@ AlertDialog calender(BuildContext context) {
                             height: 10.h,
                           ),
                           MainTextStyle(
-                            title: AppWords.sample,
+                            title: '${AppWords.sample} 5',
                             size: 18,
                           ),
                           SizedBox(

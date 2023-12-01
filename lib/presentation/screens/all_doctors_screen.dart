@@ -35,8 +35,12 @@ class AllDoctorsScreen extends StatelessWidget {
               onPressed: () {
                 FirebaseAuth.instance.signOut().then((value) {
                   print("Signed Out");
-                  Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) => const LoginScreen()),(route) => false,);
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
+                    (route) => false,
+                  );
                 });
               },
               icon: const Icon(

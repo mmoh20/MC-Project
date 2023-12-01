@@ -4,8 +4,10 @@ import 'package:mc_project/app/app_images.dart';
 import 'package:mc_project/app/app_words.dart';
 import 'package:mc_project/presentation/components/main_text_style.dart';
 import 'package:mc_project/presentation/components/title_text_style.dart';
+import 'package:mc_project/presentation/screens/health_test2_screen.dart';
 
 import '../../app/app_colors.dart';
+import 'health_test3_screen.dart';
 
 class HealthTestManScreen extends StatelessWidget {
   const HealthTestManScreen({super.key});
@@ -36,12 +38,16 @@ class HealthTestManScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 15,
-                    backgroundColor: AppColors.mainColor,
-                    child: Text(
-                      '+',
-                      style: TextStyle(fontSize: 25, color: AppColors.bgColor),
+                   InkWell(
+                    onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>const HealthTest2Screen()));},
+                     borderRadius: BorderRadius.circular(15.r),
+                    child: const CircleAvatar(
+                      radius: 15,
+                      backgroundColor: AppColors.mainColor,
+                      child: Text(
+                        '+',
+                        style: TextStyle(fontSize: 25, color: AppColors.bgColor),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -95,7 +101,7 @@ class HealthTestManScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(25))),
                           side: MaterialStateProperty.all(const BorderSide(
                               color: AppColors.mainColor, width: 3))),
-                      onPressed: () {},
+                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>const HealthTest3Screen()));},
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 45.w, vertical: 15.h),

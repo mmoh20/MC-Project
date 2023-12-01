@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mc_project/app/app_colors.dart';
@@ -5,6 +6,9 @@ import 'package:mc_project/app/app_images.dart';
 import 'package:mc_project/app/app_words.dart';
 import 'package:mc_project/presentation/components/main_text_style.dart';
 import 'package:mc_project/presentation/components/title_text_style.dart';
+
+import '../edit_your_profile_screen.dart';
+import '../login_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -21,23 +25,20 @@ class SettingsScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: SizedBox(
               width: 30,
               child: TextButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          side: const BorderSide(
-                              width: 2, color: AppColors.mainColor),
-                          borderRadius: BorderRadius.circular(10)))),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: TitleTextStyle(
                     title: 'X',
                   )),
             ),
           ),
           SizedBox(
-            width: 15.w,
+            width: 10.w,
           )
         ],
       ),
@@ -60,7 +61,12 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 horizontalTitleGap: 0,
                 dense: true,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const EditYourProfileScreen()));
+                },
               ),
               ListTile(
                 leading: Image.asset(
@@ -201,10 +207,23 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              MainTextStyle(
-                title: AppWords.logOut,
-                cl: Colors.red,
-                size: 18,
+              TextButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut().then((value) {
+                    print("Signed Out");
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                      (route) => false,
+                    );
+                  });
+                },
+                child: MainTextStyle(
+                  title: AppWords.logOut,
+                  cl: Colors.red,
+                  size: 18,
+                ),
               ),
             ],
           ),
