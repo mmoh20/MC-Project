@@ -1,4 +1,4 @@
-import 'dart:async';
+//import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +8,7 @@ import 'package:mc_project/app/app_words.dart';
 import 'package:mc_project/presentation/components/custom_verify_button.dart';
 import 'package:mc_project/presentation/components/title_text_style.dart';
 import 'package:mc_project/presentation/screens/otp_verifid_screen.dart';
-import '../../app/app_fonts.dart';
+import '../../../app/app_fonts.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
@@ -28,18 +28,18 @@ class _OtpScreenState extends State<OtpScreen> {
   static int start = 30;
 
   void startTimer() {
-    const onSec = Duration(seconds: 1);
-    Timer timer = Timer.periodic(onSec, (timer) {
-      if (start == 0) {
-        setState(() {
-          timer.cancel();
-        });
-      } else {
-        setState(() {
-          start--;
-        });
-      }
-    });
+    //const onSec = Duration(seconds: 1);
+    // Timer timer = Timer.periodic(onSec, (timer) {
+    //   if (start == 0) {
+    //     setState(() {
+    //       timer.cancel();
+    //     });
+    //   } else {
+    //     setState(() {
+    //       start--;
+    //     });
+    //   }
+    // });
   }
 
   @override

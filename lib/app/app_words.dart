@@ -8,7 +8,6 @@ class AppWords {
   static const String save = 'Save';
   static const String eEmail = 'Enter your e-mail';
   static const String ePass = 'Enter your password';
-
   static const String allDoctors = 'All Doctors';
   static const String topDoctors = 'Top Doctors';
   static const String categories = 'Categories';
